@@ -1,15 +1,35 @@
 package com.ufabc.web.livraria.model.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Editora {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
+	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
 	private Long id;
+	private String nome;
+	private String sede;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	private Collection<Livro> livros = new ArrayList<Livro>();
+	
+	public Collection<Livro> getLivros() {
+		return livros;
+	}
+	public void setLivros(Collection<Livro> livros) {
+		this.livros = livros;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -28,6 +48,4 @@ public class Editora {
 	public void setSede(String sede) {
 		this.sede = sede;
 	}
-	private String nome;
-	private String sede;
 }

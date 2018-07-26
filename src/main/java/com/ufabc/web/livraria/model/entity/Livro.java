@@ -1,14 +1,25 @@
 package com.ufabc.web.livraria.model.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+
 
 @Entity
 public class Livro {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
+	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
 	private Long id;
 	private String nome;
 	private String titulo;
@@ -18,6 +29,34 @@ public class Livro {
 	private int quantidade;
 	private String isbn;
 	
+	@ManyToMany
+	private Collection<Autor> autor = new ArrayList<>();
+	
+	public Collection<Autor> getAutor() {
+		return autor;
+	}
+	public void setAutor(Collection<Autor> autor) {
+		this.autor = autor;
+	}
+	@ManyToOne
+	private Editora editora;
+	
+	public Editora getEditora() {
+		return editora;
+	}
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+	@OneToOne
+	private Emprestimo emprestimo;
+	
+	
+	public Emprestimo getEmprestimo() {
+		return emprestimo;
+	}
+	public void setEmprestimo(Emprestimo emprestimo) {
+		this.emprestimo = emprestimo;
+	}
 	public String getIsbn() {
 		return isbn;
 	}
