@@ -28,6 +28,7 @@ public class Livro {
 	private String idioma;
 	private int quantidade;
 	private String isbn;
+	private String srcImagemCapa;
 	
 	@ManyToMany
 	private Collection<Autor> autor = new ArrayList<>();
@@ -104,5 +105,11 @@ public class Livro {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public String getSrcImagemCapa() {
+		return srcImagemCapa;
+	}
+	public void setSrcImagemCapa(String srcImagemCapa) {
+		this.srcImagemCapa = srcImagemCapa;
 	}
 }

@@ -7,5 +7,5 @@ import com.ufabc.web.livraria.model.entity.Autor;
 
 @Repository
 public interface AutorDao extends JpaRepository<Autor, Long> {
-
+	Autor findByNome(String nome);	
 }
