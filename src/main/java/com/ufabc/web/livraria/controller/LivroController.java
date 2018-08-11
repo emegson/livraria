@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,12 +26,19 @@ public class LivroController {
 	@Autowired
 	AutorDao autorDao;
 
+	@RequestMapping(value = {"/"})
+	@ResponseBody
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+	
 	// pagina que lista os livros
-	@RequestMapping(value = {"/", "/livros" })
+	@RequestMapping(value = {"/livros" })
 	@ResponseBody
 	public ModelAndView livros() {
 		ModelAndView mv = new ModelAndView("livros");
-		mv.addObject("livros", livroDao.findAllByOrderByNomeAsc());
+		mv.addObject("livros", livroDao.findAll());
 		System.out.println(autorDao.findAll().toString());
 		return mv;
 	}
@@ -69,20 +77,9 @@ public class LivroController {
 
 	@RequestMapping(value = { "/salvarLivro" })
 	@ResponseBody
-	public RedirectView salvarLivro(@RequestParam String nome, @RequestParam String edicao,@RequestParam String titulo,
-			@RequestParam String ano, @RequestParam String idioma, @RequestParam String quantidade,
-			@RequestParam String isbn, @RequestParam String srcImagemCapa) {
+	public RedirectView salvarLivro(@ModelAttribute Livro livro ) {
 
-		Livro livro = new Livro();
-	
-		livro.setNome(nome);
-		livro.setTitulo(titulo);
-		livro.setEdicao(Integer.parseInt(edicao));
-		livro.setAno(Integer.parseInt(ano));
-		livro.setIdioma(idioma);
-		livro.setQuantidade(Integer.parseInt(quantidade));
-		livro.setIsbn(isbn);
-		livro.setSrcImagemCapa(srcImagemCapa);
+		
 		livroDao.save(livro);
 		return new RedirectView("/livros");
 
@@ -90,24 +87,11 @@ public class LivroController {
 
 	@RequestMapping(value = { "/salvarEdicaoLivro" })
 	@ResponseBody
-	public RedirectView salvarEdicaoLivro(@RequestParam String id, @RequestParam String nome, @RequestParam String titulo, @RequestParam String edicao,
-			@RequestParam String ano, @RequestParam String idioma, @RequestParam String quantidade,
-			@RequestParam String isbn, @RequestParam String srcImagemCapa, @RequestParam String autor) {
+	public RedirectView salvarEdicaoLivro(@ModelAttribute Livro livro) {
 		
 		Autor autorClasse = new Autor();
-		autorClasse = autorDao.findByNome(autor);
+		//autorClasse = autorDao.findByNome(autor);
 		
-		Livro livro = new Livro();
-
-		livro = livroDao.getOne(Long.parseLong(id));
-		livro.setNome(nome);
-		livro.setTitulo(titulo);
-		livro.setEdicao(Integer.parseInt(edicao));
-		livro.setAno(Integer.parseInt(ano));
-		livro.setIdioma(idioma);
-		livro.setQuantidade(Integer.parseInt(quantidade));
-		livro.setIsbn(isbn);
-		livro.setSrcImagemCapa(srcImagemCapa);
 		livroDao.save(livro);
 		
 		

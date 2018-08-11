@@ -9,11 +9,7 @@
 <title>Inserir Conta Corrente</title>
 </head>
 <body>
-	<form action="/salvarLivro" method="post">
-		<div>
-			<p>Nome</p>
-			<input type="text" name="nome">
-		</div>
+	<form action="/salvarLivro" method="post" modelAttribute="livro">
 		<div>
 			<p>Título</p>
 			<input type="text" name="titulo">
@@ -42,6 +38,11 @@
 			<p>Endereço da Imagem</p>
 			<input type="text" name="srcImagemCapa">
 		</div>
+		<div>
+			<p>Nome do Autor</p>
+			<input type="text" name="">
+		</div>
+
 		<div>
 			<input type="submit" value="Salvar">
 		</div>

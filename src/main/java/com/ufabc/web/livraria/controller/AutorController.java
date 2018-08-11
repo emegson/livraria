@@ -26,7 +26,7 @@ public class AutorController {
 		return mv;
 	}	
 	
-	//redirecionar para página de inserir autor
+	//redirecionar para pï¿½gina de inserir autor
 	@RequestMapping(value = { "/inserirAutor" })
 	@ResponseBody
 	public ModelAndView inserirAutor() {
@@ -34,7 +34,7 @@ public class AutorController {
 		return mv;
 	}
 
-	//redirecionar para página de editar autor
+	//redirecionar para pï¿½gina de editar autor
 	@RequestMapping(value = { "/editarAutor/{id}" })
 	public ModelAndView editarAutor(@PathVariable Long id) {
 		Autor autor = autorDao.getOne(id);
@@ -57,14 +57,14 @@ public class AutorController {
 		
 	@RequestMapping(value = { "/salvarAutor" })
 	@ResponseBody
-	public RedirectView salvar(@RequestParam String nomeAutor, @RequestParam String nacionalidadeAutor) {
+	public ModelAndView salvar(@RequestParam String nomeAutor, @RequestParam String nacionalidadeAutor) {
 		
 		Autor autor = new Autor();
 
 		autor.setNome(nomeAutor);
 		autor.setNacionalidade(nacionalidadeAutor);			
 		autorDao.save(autor);
-		return new RedirectView("/autores");
+		return new ModelAndView("redirect:/");
 	}
 	
 	@RequestMapping(value = { "/salvarEdicaoAutor" })

@@ -21,7 +21,6 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
 	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
 	private Long id;
-	private String nome;
 	private String titulo;
 	private int edicao;
 	private int ano;
@@ -69,12 +68,6 @@ public class Livro {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 	public String getTitulo() {
 		return titulo;

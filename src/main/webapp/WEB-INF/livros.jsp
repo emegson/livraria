@@ -8,10 +8,11 @@
 <meta charset="UTF-8" />
 <title>Lista de Livros</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
-	integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-	crossorigin="anonymous">
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+
+</head>
 <style>
 .center {
 	display: block;
@@ -30,7 +31,6 @@
 
 }
 </style>
-</head>
 <body>
 <!-- 	<table border="1" class="table"> -->
 <!-- 		<thead> -->
@@ -67,10 +67,10 @@
 					<div class="card" style="margin: 10px;"
 						id="idCard_${livros.id}">
 						<img class="card-img-top center" src="${livros.srcImagemCapa}"
-							style="max-width: 100px; margin-top: 5px;" alt="Capa do Livro - ${livros.nome}">
+							style="max-width: 100px; margin-top: 5px;" alt="Capa do Livro - ${livros.titulo}">
 						<div class="card-body">
 							<h5 class="card-title " style="text-align: center;height: 50px;">
-							<span class="align-middle" style="text-align: center;">${livros.nome}</span>
+							<span class="align-middle" style="text-align: center;">${livros.titulo}</span>
 							
 							</h5>
 							<p class="card-text"><ul class="list-group list-group-flush">
@@ -90,9 +90,9 @@
 	</div>
 
 </div>
-	<button>
-		<a href="/inserirLivro/">Inserir</a>
-	</button>
+	<a href="inserirLivro">
+		<button >Inserir</button>
+	</a>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
