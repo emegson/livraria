@@ -5,48 +5,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Inserir Conta Corrente</title>
+	<meta charset="UTF-8" />
+	<title>Inserir Livro</title>
+	<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="resources/site.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link
+		href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
+		rel="stylesheet">
 </head>
 <body>
-	<form action="/salvarLivro" method="post" modelAttribute="livro">
-		<div>
-			<p>Título</p>
-			<input type="text" name="titulo">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index">Livraria</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="index">Home
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="autores">Autor</a></li>
+					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div>
-			<p>Edicao</p>
-			<input type="text" name="edicao">
-		</div>
-		<div>
-			<p>Ano</p>
-			<input type="text" name="ano">
-		</div>
-		<div>
-			<p>Idioma</p>
-			<input type="text" name="idioma">
-		</div>
-		<div>
-			<p>Quantidade</p>
-			<input type="text" name="quantidade">
-		</div>
-		<div>
-			<p>ISBN</p>
-			<input type="text" name="isbn">
-		</div>
-		<div>
-			<p>Endereço da Imagem</p>
-			<input type="text" name="srcImagemCapa">
-		</div>
-		<div>
-			<p>Nome do Autor</p>
-			<input type="text" name="">
-		</div>
+	</nav>
+	<div class="main" >
+		<form action="/salvarLivro" method="post" modelAttribute="livro">
+			<div class="container">
+				<div class="form-group">
+					<label for="titulo" class="control-label">Título</p>
+					<input class="form-control" type="text" name="titulo" placeholder="Titulo do livro" required>
+				</div>
+				<div class="form-group">
+					<label for="edicao" class="control-label">Edicao</label>
+					<input class="form-control" type="text" name="edicao" placeholder="Número da edição" required>
+				</div>
+				<div class="form-group">
+					<label for="ano" class="control-label">Ano</label>
+					<input class="form-control" type="text" name="ano" placeholder="Ano desta edição" required>
+				</div>
+				<div class="form-group">
+					<label for="idioma" class="control-label">Idioma</label>
+					<input class="form-control" type="text" name="idioma" placeholder="Idioma do livro" required>
+				</div>
+				<div>
+					<label for="quantidade" class="control-label">Quantidade</label>
+					<input class="form-control" type="text" name="quantidade" placeholder="Quantidade de exemplares" required>
+				</div>
+				<div class="form-group">
+					<label for="isbn" class="control-label">ISBN</label>
+					<input class="form-control" type="text" name="isbn" placeholder="ISBN do livro" required>
+				</div>
+				<div class="form-group">
+					<label for="srcImagemCapa" class="control-label">Endereço da Imagem</label>
+					<input class="form-control" type="text" name="srcImagemCapa" placeholder="Link da capa" required>
+				</div>
+				<div class="form-group">
+					<label for="autor" class="control-label">Autor</label> <select
+						class="form-control" id="autor" name="autor" data-live-search="true" >
+						<c:forEach items="${autores}" var="autores">
+							<option value ="${autores.idautor}" data-tokens="${autores.nome} ${autores.nacionalidade}">${autores.nome}</option>
+						</c:forEach>
+					</select>
 
-		<div>
-			<input type="submit" value="Salvar">
+				</div>
+		
+				<div class="container">
+					<input type="submit" class="btn btn-primary" value="Salvar">
+					<button type="button" class="btn btn-primary" onClick="history.go(-1)">Voltar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Livraria
+				2018</p>
 		</div>
-
-	</form>
+	</footer>
 </body>
 </html>
