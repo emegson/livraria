@@ -7,34 +7,46 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Lista de Contas Corrente</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
-	integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-	crossorigin="anonymous">
+<title>${livro.titulo}</title>
+	<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="resources/site.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link
+		href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
+		rel="stylesheet">
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="../index">Livraria</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="../index">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="../autores">Autor</a></li>
+					<li class="nav-item"><a class="nav-link" href="../livros">Livro</a></li>
+					<li class="nav-item"><a class="nav-link" href="../#">Editora</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-	<div class="container">
-		<div class="row">
-
-			<div class="col-sm" style="text-align: right;">
+			<div class="col-sm" style="text-align: center">
 				<img src="${livro.srcImagemCapa}"
-					style="margin-right: 5px; margin-top: 10%; max-width: 250px;">
+					style="margin-right: 5px; margin-top: 3%; max-width: 250px;">
 			</div>
 			<div class="col-sm">
 				<form action="/salvarEdicaoLivro" method="post">
 					<div class="container">
 						<div class="form-group" style="display: none;">
-							<label for="id" class="control-label">Id</label> <input
-								type="text" class="form-control" id="id" name="id"
-								value="${livro.id}">
-						</div>
-
-						<div class="form-group">
-							<label for="nome" class="control-label">Nome do Livro</label> <input
-								type="text" class="form-control" id="nome" name="nome"
-								value="${livro.nome}" required>
+							<label for="idlivro" class="control-label">Id</label> <input
+								type="text" class="form-control" id="idlivro" name="idlivro"
+								value="${livro.idlivro}">
 						</div>
 
 						<div class="form-group">
@@ -48,7 +60,7 @@
 							<label for="autor" class="control-label">Autor</label> <select
 								class="form-control" id="autor" name="autor" data-live-search="true" >
 								<c:forEach items="${autores}" var="autores">
-									<option value ="${autores.nome}" data-tokens="${autores.nome} ${autores.nacionalidade}">${autores.nome}</option>
+									<option value ="${autores.idautor}" data-tokens="${autores.nome} ${autores.nacionalidade}">${autores.nome}</option>
 								</c:forEach>
 							</select>
 
@@ -99,11 +111,6 @@
 				</form>
 			</div>
 
-		</div>
-
-
-
-	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -115,5 +122,12 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
 		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
 		crossorigin="anonymous"></script>
+		
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Livraria
+				2018</p>
+		</div>
+	</footer>
 </body>
 </html>
