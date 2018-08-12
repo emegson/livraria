@@ -16,24 +16,15 @@ public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
 	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
-	private Long id;
+	private Long idautor;
 	private String nome;
 	private String nacionalidade;
-
-	@ManyToMany
-	private Collection<Livro> livros = new ArrayList<Livro>();
 	
-	public Collection<Livro> getLivros() {
-		return livros;
+	public Long getIdautor() {
+		return idautor;
 	}
-	public void setLivros(Collection<Livro> livros) {
-		this.livros = livros;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdautor(Long id) {
+		this.idautor = id;
 	}
 	public String getNome() {
 		return nome;

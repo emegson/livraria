@@ -1,12 +1,10 @@
 package com.ufabc.web.livraria.model.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -20,7 +18,7 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
 	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
-	private Long id;
+	private Long idlivro;
 	private String titulo;
 	private int edicao;
 	private int ano;
@@ -29,13 +27,14 @@ public class Livro {
 	private String isbn;
 	private String srcImagemCapa;
 	
-	@ManyToMany
-	private Collection<Autor> autor = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "idautor")
+	private Autor autor;
 	
-	public Collection<Autor> getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
-	public void setAutor(Collection<Autor> autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 	@ManyToOne
@@ -63,11 +62,11 @@ public class Livro {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public Long getId() {
-		return id;
+	public Long getidlivro() {
+		return idlivro;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setidlivro(Long id) {
+		this.idlivro = id;
 	}
 	public String getTitulo() {
 		return titulo;

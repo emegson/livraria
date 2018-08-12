@@ -1,21 +1,16 @@
 package com.ufabc.web.livraria.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.ufabc.web.livraria.model.dao.AutorDao;
 import com.ufabc.web.livraria.model.dao.LivroDao;
-import com.ufabc.web.livraria.model.entity.Autor;
 import com.ufabc.web.livraria.model.entity.Livro;
 
 @Controller
@@ -26,12 +21,15 @@ public class LivroController {
 	@Autowired
 	AutorDao autorDao;
 
-	@RequestMapping(value = {"/"})
+	@RequestMapping(value = {"/", "index"})
 	@ResponseBody
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("livros", livroDao.findAll());
+		System.out.println(autorDao.findAll().toString());
 		return mv;
 	}
+	
 	
 	// pagina que lista os livros
 	@RequestMapping(value = {"/livros" })
@@ -48,6 +46,9 @@ public class LivroController {
 	@ResponseBody
 	public ModelAndView inserirLivro() {
 		ModelAndView mv = new ModelAndView("inserirLivro");
+		
+		mv.addObject("autores", autorDao.findAll());
+		
 		return mv;
 	}
 
@@ -79,8 +80,8 @@ public class LivroController {
 	@ResponseBody
 	public RedirectView salvarLivro(@ModelAttribute Livro livro ) {
 
-		
 		livroDao.save(livro);
+
 		return new RedirectView("/livros");
 
 	}
@@ -89,7 +90,7 @@ public class LivroController {
 	@ResponseBody
 	public RedirectView salvarEdicaoLivro(@ModelAttribute Livro livro) {
 		
-		Autor autorClasse = new Autor();
+		//Autor autorClasse = new Autor();
 		//autorClasse = autorDao.findByNome(autor);
 		
 		livroDao.save(livro);

@@ -2,9 +2,9 @@ package com.ufabc.web.livraria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -57,26 +57,19 @@ public class AutorController {
 		
 	@RequestMapping(value = { "/salvarAutor" })
 	@ResponseBody
-	public ModelAndView salvar(@RequestParam String nomeAutor, @RequestParam String nacionalidadeAutor) {
+	public ModelAndView salvar(@ModelAttribute Autor autor) {		
 		
-		Autor autor = new Autor();
-
-		autor.setNome(nomeAutor);
-		autor.setNacionalidade(nacionalidadeAutor);			
 		autorDao.save(autor);
-		return new ModelAndView("redirect:/");
+		
+		return new ModelAndView("redirect:/autores");
 	}
 	
 	@RequestMapping(value = { "/salvarEdicaoAutor" })
 	@ResponseBody
-	public RedirectView salvarEdicaoAutor(@RequestParam String id, @RequestParam String nome, @RequestParam String nacionalidade) {		
-		Autor autor = new Autor();
+	public RedirectView salvarEdicaoAutor(@ModelAttribute Autor autor) {		
 		
-		autorDao.getOne(Long.parseLong(id));		
-		autor.setNome(nome);
-		autor.setNacionalidade(nacionalidade);			
+		autorDao.save(autor);
 		
-		autorDao.save(autor);							
 		return new RedirectView("/autores");
 	}
 	
