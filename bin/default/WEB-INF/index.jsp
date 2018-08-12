@@ -41,13 +41,14 @@
 			</div>
 		</div>
 	</nav>
+	<div class="main">
 		<div class="card-columns">
 			<c:forEach items="${livros}" var="livros">
 					<div class="card" style="margin: 10px;"
-						id="idCard_${livros.id}">
-						<img class="card-img-top center" src="${livros.srcImagemCapa}"
-							style="max-width: 100px; margin-top: 5px;" alt="Capa do Livro - ${livros.titulo}">
-						<div class="card-body">
+						id="idCard_${livros.idlivro}">
+							<img class="card-img-top center" src="${livros.srcImagemCapa}"
+								style="float: left;max-width: 100px; margin-top: 5px;" alt="Capa do Livro - ${livros.titulo}">
+						<div class="card-body" style="float: right;">						
 							<h5 class="card-title " style="text-align: center;height: 50px;">
 							<span class="align-middle" style="text-align: center;">${livros.titulo}</span>
 							</h5>
@@ -58,13 +59,10 @@
 									<li class="list-group-item">Quantidade: ${livros.quantidade}</li>
 								</ul>
 							</p>
-							<div style="text-align:center;">
-								<a href="/editarLivro/${livros.id}" class="btn btn-primary ">Editar</a>
-								<a href="/removerLivro/${livros.id}" class="btn btn-secondary ">Remover</a>
-							</div>
 						</div>
 					</div>
 			</c:forEach>
+		</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
