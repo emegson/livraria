@@ -7,27 +7,52 @@
 <head>
 <meta charset="UTF-8" />
 <title>Inserir Autor</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
-	integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-	crossorigin="anonymous">
+	<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="resources/site.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link
+		href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
+		rel="stylesheet">
 </head>
 <body>
-
-	<form action="/salvarAutor" method="post">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index">Livraria</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+					<li class="nav-item active"><a class="nav-link" href="autores">Autor
+						<span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<form action="/salvarAutor" method="post" modelAttribute="autor">
 		<div class="container">
 			<div class="form-group">
-				<label for="nomeAutor" class="control-label">Nome do Autor</label>
-				<input type="text" class="form-control" id="nomeAutor" name="nomeAutor" placeholder="Machado de Assis" required>
+				<label for="nome" class="control-label">Nome do Autor</label>
+				<input type="text" class="form-control" id="nome" name="nome" placeholder="Machado de Assis" required>
 			</div>
 
 			<div class="form-group">
-				<label for="nacionalidadeAutor" class="control-label">Nacionalidade</label>
-				<input type="text" class="form-control" id="nacionalidadeAutor"	name="nacionalidadeAutor" placeholder="Brasileiro" required>
+				<label for="nacionalidade" class="control-label">Nacionalidade</label>
+				<input type="text" class="form-control" id="nacionalidade"	name="nacionalidade" placeholder="Brasileiro" required>
 			</div>
 			<div class="form-group">
 				<!-- Submit Button -->
 				<button type="submit" class="btn btn-primary">Inserir</button>
+				<button type="button" class="btn btn-primary" onClick="history.go(-1)">Voltar</button>
 			</div>
 		</div>
 	</form>
@@ -44,5 +69,12 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
 		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
 		crossorigin="anonymous"></script>
+		
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Livraria
+				2018</p>
+		</div>
+	</footer>
 </body>
 </html>
