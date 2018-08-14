@@ -51,8 +51,8 @@
 		<form action="/salvarLivro" method="post" modelAttribute="livro">
 			<div class="container">
 				<div class="form-group">
-					<label for="titulo" class="control-label">Título
-						</p> <input class="form-control" type="text" name="titulo"
+					<label for="titulo" class="control-label">Título</label>
+					<input class="form-control" type="text" name="titulo"
 						placeholder="Titulo do livro" required>
 				</div>
 				<div class="form-group">
@@ -87,7 +87,7 @@
 				</div>
 				<div class="form-group">
 					<label for="autor" class="control-label">Autor</label> 
-					<input class="form-control" id="autor" name="autor" />
+					<input class="form-control" id="autor" name="autor" placeholder="Autor" required/>
 				</div>
 				<div class="container">
 					<input type="submit" class="btn btn-primary" value="Salvar">
