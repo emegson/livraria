@@ -32,12 +32,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
-					<li class="nav-item active"><a class="nav-link" href="autores">Autor
-						<span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
+					<li class="nav-item"><a class="nav-link" href="index">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="autores">Autor</a></li>
+					<li class="nav-item"><a class="nav-link" href="livros">Livro</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Editora</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="inserirAutor">Inserir Autor <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
