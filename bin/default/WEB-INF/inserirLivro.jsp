@@ -5,15 +5,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<meta charset="UTF-8" />
-	<title>Inserir Livro</title>
-	<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="resources/site.css" rel="stylesheet">
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-	<link
-		href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
-		rel="stylesheet">
+<meta charset="UTF-8" />
+<title>Inserir Livro</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/site.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<link
+	href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -28,59 +33,65 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="index">Home
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="autores">Autor</a></li>
+					<li class="nav-item"><a class="nav-link" href="autores">Autor</a>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
+					</li>
+					<li class="nav-item active"><a class="nav-link"
+						href="inserirLivro">Inserir Livro <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="main" >
+	<div class="main">
 		<form action="/salvarLivro" method="post" modelAttribute="livro">
 			<div class="container">
 				<div class="form-group">
-					<label for="titulo" class="control-label">Título</p>
-					<input class="form-control" type="text" name="titulo" placeholder="Titulo do livro" required>
+					<label for="titulo" class="control-label">Título
+						</p> <input class="form-control" type="text" name="titulo"
+						placeholder="Titulo do livro" required>
 				</div>
 				<div class="form-group">
-					<label for="edicao" class="control-label">Edicao</label>
-					<input class="form-control" type="text" name="edicao" placeholder="Número da edição" required>
+					<label for="edicao" class="control-label">Edicao</label> <input
+						class="form-control" type="text" name="edicao"
+						placeholder="Número da edição" required>
 				</div>
 				<div class="form-group">
-					<label for="ano" class="control-label">Ano</label>
-					<input class="form-control" type="text" name="ano" placeholder="Ano desta edição" required>
+					<label for="ano" class="control-label">Ano</label> <input
+						class="form-control" type="text" name="ano"
+						placeholder="Ano desta edição" required>
 				</div>
 				<div class="form-group">
-					<label for="idioma" class="control-label">Idioma</label>
-					<input class="form-control" type="text" name="idioma" placeholder="Idioma do livro" required>
+					<label for="idioma" class="control-label">Idioma</label> <input
+						class="form-control" type="text" name="idioma"
+						placeholder="Idioma do livro" required>
 				</div>
 				<div>
-					<label for="quantidade" class="control-label">Quantidade</label>
-					<input class="form-control" type="text" name="quantidade" placeholder="Quantidade de exemplares" required>
+					<label for="quantidade" class="control-label">Quantidade</label> <input
+						class="form-control" type="text" name="quantidade"
+						placeholder="Quantidade de exemplares" required>
 				</div>
 				<div class="form-group">
-					<label for="isbn" class="control-label">ISBN</label>
-					<input class="form-control" type="text" name="isbn" placeholder="ISBN do livro" required>
+					<label for="isbn" class="control-label">ISBN</label> <input
+						class="form-control" type="text" name="isbn"
+						placeholder="ISBN do livro" required>
 				</div>
 				<div class="form-group">
-					<label for="srcImagemCapa" class="control-label">Endereço da Imagem</label>
-					<input class="form-control" type="text" name="srcImagemCapa" placeholder="Link da capa" required>
+					<label for="srcImagemCapa" class="control-label">Endereço
+						da Imagem</label> <input class="form-control" type="text"
+						name="srcImagemCapa" placeholder="Link da capa" required>
 				</div>
 				<div class="form-group">
-					<label for="autor" class="control-label">Autor</label> <select
-						class="form-control" id="autor" name="autor" data-live-search="true" >
-						<c:forEach items="${autores}" var="autores">
-							<option value ="${autores.idautor}" data-tokens="${autores.nome} ${autores.nacionalidade}">${autores.nome}</option>
-						</c:forEach>
-					</select>
-
+					<label for="autor" class="control-label">Autor</label> 
+					<input class="form-control" id="autor" name="autor" />
 				</div>
-		
 				<div class="container">
 					<input type="submit" class="btn btn-primary" value="Salvar">
-					<button type="button" class="btn btn-primary" onClick="history.go(-1)">Voltar</button>
+					<button type="button" class="btn btn-primary"
+						onClick="history.go(-1)">Voltar</button>
 				</div>
 			</div>
 		</form>
@@ -91,5 +102,28 @@
 				2018</p>
 		</div>
 	</footer>
+	<script type="text/javascript">
+		$('#autor').autocomplete({
+			source : function(request, response) {
+				$.ajax({
+					url : 'http://localhost:8080/autores/findByName/' + request.term,
+					type : 'POST',
+					dataType : 'json',
+					data : {
+						searchText : request.term,
+					},
+					success : function(data) {
+						response($.map(data, function(item) {
+							console.log(item['nome'])
+							return {
+								label : item['nome'],
+								value : item['id']
+							}
+						}));
+					}
+				});
+			}
+		});
+	</script>
 </body>
 </html>

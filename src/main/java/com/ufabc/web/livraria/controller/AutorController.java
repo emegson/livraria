@@ -1,5 +1,7 @@
 package com.ufabc.web.livraria.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +27,18 @@ public class AutorController {
 		mv.addObject("autores", autorDao.findAll());
 		return mv;
 	}	
+	
+	@RequestMapping(value = { "/autores/findByName/{autor}" })
+	@ResponseBody
+	public List<Autor> autoresFindByName(@PathVariable String autor) {
+		return autorDao.findByNomeContainingIgnoreCase(autor);
+	}
+	
+	@RequestMapping(value = { "/autores/findAll" })
+	@ResponseBody
+	public List<Autor> autoresFindAll() {
+		return autorDao.findAll();
+	}
 	
 	//redirecionar para p�gina de inserir autor
 	@RequestMapping(value = { "/inserirAutor" })
