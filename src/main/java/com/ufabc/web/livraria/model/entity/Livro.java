@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 
@@ -22,7 +21,6 @@ public class Livro {
 	private int edicao;
 	private int ano;
 	private String idioma;
-	private int quantidade;
 	private String isbn;
 	private String srcImagemCapa;
 	
@@ -30,6 +28,20 @@ public class Livro {
 	@JoinColumn(name = "idautor")
 	private Autor autor;
 	
+	public Livro ()
+	{
+		
+	}
+	public Livro(String titulo, int edicao, int ano, String idioma, String isbn,
+			String srcImagemCapa) {
+		super();
+		this.titulo = titulo;
+		this.edicao = edicao;
+		this.ano = ano;
+		this.idioma = idioma;
+		this.isbn = isbn;
+		this.srcImagemCapa = srcImagemCapa;
+	}
 	public Autor getAutor() {
 		return autor;
 	}
@@ -44,16 +56,6 @@ public class Livro {
 	}
 	public void setEditora(Editora editora) {
 		this.editora = editora;
-	}
-	@OneToOne
-	private Emprestimo emprestimo;
-	
-	
-	public Emprestimo getEmprestimo() {
-		return emprestimo;
-	}
-	public void setEmprestimo(Emprestimo emprestimo) {
-		this.emprestimo = emprestimo;
 	}
 	public String getIsbn() {
 		return isbn;
@@ -90,12 +92,6 @@ public class Livro {
 	}
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
-	}
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 	public String getSrcImagemCapa() {
 		return srcImagemCapa;
