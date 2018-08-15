@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Emprestimo {
@@ -17,8 +16,8 @@ public class Emprestimo {
 	private Date dataDoEmprestimo;
 	private Date dataDeRetorno;
 	
-	@OneToOne
-	private Livro livro;
+	@ManyToOne
+	private Exemplar livro;
 	
 	@ManyToOne
 	private Cliente cliente;
@@ -46,6 +45,14 @@ public class Emprestimo {
 	}
 	public void setDataDeRetorno(Date dataDeRetorno) {
 		this.dataDeRetorno = dataDeRetorno;
+	}
+	public void setExemplar(Exemplar livro)
+	{
+		this.livro = livro;
+	}
+	public Exemplar getExemplar()
+	{
+		return livro;
 	}
 	
 }
