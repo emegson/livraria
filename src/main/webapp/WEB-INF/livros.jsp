@@ -63,7 +63,7 @@
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">Edição: ${livros.edicao}</li>
 									<li class="list-group-item">Ano: ${livros.ano}</li>
-									<li class="list-group-item">Quantidade: ${livros.quantidade}</li>
+									<li class="list-group-item">Quantidade: <!-- fazer metodo pra retornar a quantidade de exemplares --></li>
 								</ul>
 							</p>
 							<div style="text-align:center;">
