@@ -16,7 +16,6 @@
 	<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 	
@@ -56,28 +55,23 @@
 						placeholder="Titulo do livro" required>
 				</div>
 				<div class="form-group">
-					<label for="edicao" class="control-label">Edicao</label> <input
-						class="form-control" type="text" name="edicao"
+					<label for="edicao" class="control-label">Edicao</label> 
+					<input class="form-control" type="text" name="edicao"
 						placeholder="Número da edição" required>
 				</div>
 				<div class="form-group">
-					<label for="ano" class="control-label">Ano</label> <input
-						class="form-control" type="text" name="ano"
+					<label for="ano" class="control-label">Ano</label> 
+					<input class="form-control" type="text" name="ano"
 						placeholder="Ano desta edição" required>
 				</div>
 				<div class="form-group">
-					<label for="idioma" class="control-label">Idioma</label> <input
-						class="form-control" type="text" name="idioma"
+					<label for="idioma" class="control-label">Idioma</label> 
+					<input class="form-control" type="text" name="idioma"
 						placeholder="Idioma do livro" required>
 				</div>
-				<div>
-					<label for="quantidade" class="control-label">Quantidade</label> <input
-						class="form-control" type="text" name="quantidade"
-						placeholder="Quantidade de exemplares" required>
-				</div>
 				<div class="form-group">
-					<label for="isbn" class="control-label">ISBN</label> <input
-						class="form-control" type="text" name="isbn"
+					<label for="isbn" class="control-label">ISBN</label>
+					<input class="form-control" type="text" name="isbn"
 						placeholder="ISBN do livro" required>
 				</div>
 				<div class="form-group">
@@ -107,11 +101,11 @@
 		$('#autor').autocomplete({
 			source : function(request, response) {
 				$.ajax({
-					url : 'http://localhost:8080/autores/findAll/',
+					url : 'http://localhost:8080/autores/findByName/',
 					type : 'POST',
 					dataType : 'json',
 					data : {
-						searchText : request.term,
+						autor : request.term,
 					},
 					success : function(data) {
 						response($.map(data, function(item) {
