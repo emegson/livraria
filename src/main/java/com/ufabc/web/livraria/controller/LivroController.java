@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -21,7 +22,7 @@ public class LivroController {
 	@Autowired
 	AutorDao autorDao;
 
-	@RequestMapping(value = {"/", "index"})
+	@RequestMapping(value = {"/", "/index"})
 	@ResponseBody
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
@@ -78,8 +79,12 @@ public class LivroController {
 
 	@RequestMapping(value = { "/salvarLivro" })
 	@ResponseBody
-	public RedirectView salvarLivro(@ModelAttribute Livro livro ) {
-
+	public RedirectView salvarLivro(@RequestParam String titulo, @RequestParam int edicao,
+			@RequestParam int ano, @RequestParam String idioma,
+			@RequestParam String isbn, @RequestParam String srcImagemCapa, @RequestParam String autor) 
+	{
+		Livro livro = new Livro(titulo, edicao, ano, idioma, isbn, srcImagemCapa);
+		livro.setAutor(autorDao.findByNome(autor));
 		livroDao.save(livro);
 
 		return new RedirectView("/livros");
