@@ -1,5 +1,7 @@
 package com.ufabc.web.livraria.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,7 +37,8 @@ public class LivroController {
 	// pagina que lista os livros
 	@RequestMapping(value = {"/livros" })
 	@ResponseBody
-	public ModelAndView livros() {
+	public ModelAndView livros() {		
+		
 		ModelAndView mv = new ModelAndView("livros");
 		mv.addObject("livros", livroDao.findAll());
 		System.out.println(autorDao.findAll().toString());
@@ -95,14 +98,14 @@ public class LivroController {
 	@ResponseBody
 	public RedirectView salvarEdicaoLivro(@ModelAttribute Livro livro) {
 		
-		//Autor autorClasse = new Autor();
-		//autorClasse = autorDao.findByNome(autor);
-		
-		livroDao.save(livro);
-		
-		
-	
+		livroDao.save(livro);				
 		return new RedirectView("/livros");
+	}
+	@RequestMapping(value = { "/livros/findByName/" })
+	@ResponseBody
+	public List<Livro> livrosFindByName(@RequestParam String titulo) {
+			System.out.println(titulo);
+		return livroDao.findByTituloContainingIgnoreCase(titulo);
 	}
 
 }
