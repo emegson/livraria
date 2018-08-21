@@ -1,6 +1,7 @@
 package com.ufabc.web.livraria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.ufabc.web.livraria.model.dao.ClienteDao;
 import com.ufabc.web.livraria.model.entity.Cliente;
 
+
+@Controller
 public class ClienteController {
 
 	@Autowired
@@ -34,7 +37,7 @@ public class ClienteController {
 	}
 
 	// redirecionar para pagina de editar cliente
-	@RequestMapping(value = { "/editaraCliente/{id}" })
+	@RequestMapping(value = { "/editarCliente/{id}" })
 	public ModelAndView editarCliente(@PathVariable Long id) {
 		Cliente cliente = clienteDao.getOne(id);
 
@@ -55,12 +58,10 @@ public class ClienteController {
 
 	@RequestMapping(value = { "/salvarCliente" })
 	@ResponseBody
-	public RedirectView salvarCliente(@RequestParam String id, @RequestParam String nome, @RequestParam String cpf,
+	public RedirectView salvarCliente(@RequestParam String nome, @RequestParam String cpf,
 			@RequestParam String idade, @RequestParam String endereco, @RequestParam String email) {
 
 		Cliente cliente = new Cliente();
-
-		cliente.setId(Long.parseLong(id));
 		cliente.setNome(nome);
 		cliente.setCpf(cpf);
 		cliente.setIdade(Integer.parseInt(idade));

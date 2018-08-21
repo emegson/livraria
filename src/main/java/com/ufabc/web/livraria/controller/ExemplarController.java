@@ -2,7 +2,6 @@ package com.ufabc.web.livraria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,9 +37,7 @@ public class ExemplarController {
 	@RequestMapping(value = {"/inserirExemplar" })
 	@ResponseBody
 	public ModelAndView inserirExemplar() {
-		ModelAndView mv = new ModelAndView("inserirExemplares");
-		mv.addObject("livros", livroDao.findAll());
-		System.out.println("inserirExemplares");
+		ModelAndView mv = new ModelAndView("inserirExemplar");	
 		return mv;
 	}
 	
@@ -66,33 +63,29 @@ public class ExemplarController {
 	}
 
 	// Paginas com forms
-
 	@RequestMapping(value = { "/salvarExemplar" })
 	@ResponseBody
-	public RedirectView salvarExemplar(@RequestParam boolean status, @RequestParam Livro livro) 
+	public RedirectView salvarExemplar(@RequestParam String titulo) 
 	{
-		Exemplar exemplar = new Exemplar(livro,status);
-		
+		Livro livro = livroDao.findByTitulo(titulo);
+		System.out.println(titulo);
+		Exemplar exemplar = new Exemplar();
+		exemplar.setDisponivel(true);
+		exemplar.setLivro(livro);		
 		exemplarDao.save(exemplar);
-
 		return new RedirectView("/exemplares");
-
 	}
 	
 	
 	
 	@RequestMapping(value = { "/salvarEdicaoExemplar" })
 	@ResponseBody
-	public RedirectView salvarEdicaoExemplar(@ModelAttribute Exemplar exemplar)
-	{
-		
-		//Autor autorClasse = new Autor();
-		//autorClasse = autorDao.findByNome(autor);
-		
-		exemplarDao.save(exemplar);
-		
-		
-	
+	public RedirectView salvarEdicaoExemplar(@RequestParam String idexemplar, @RequestParam(value = "disponivel", required = false) String disponivel)
+	{		
+		Exemplar exemplar= new Exemplar();
+		exemplar = exemplarDao.getOne(Long.parseLong((idexemplar)));
+		exemplar.setDisponivel(disponivel == null ? false: true);
+		exemplarDao.save(exemplar);		
 		return new RedirectView("/exemplares");
 	}
 
