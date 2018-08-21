@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.ufabc.web.livraria.model.dao.AutorDao;
+import com.ufabc.web.livraria.model.dao.ExemplarDao;
 import com.ufabc.web.livraria.model.dao.LivroDao;
 import com.ufabc.web.livraria.model.entity.Livro;
 
@@ -23,13 +24,17 @@ public class LivroController {
 	LivroDao livroDao;
 	@Autowired
 	AutorDao autorDao;
+	@Autowired
+	ExemplarDao exemplarDao;
 
 	@RequestMapping(value = {"/", "/index"})
 	@ResponseBody
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
+		
 		mv.addObject("livros", livroDao.findAll());
 		System.out.println(autorDao.findAll().toString());
+		
 		return mv;
 	}
 	
@@ -62,7 +67,6 @@ public class LivroController {
 		ModelAndView mv = new ModelAndView("editarLivro");
 		Livro livro = new Livro();
 		livro  = livroDao.getOne(id);
-		
 		mv.addObject("livro", livro);
 		mv.addObject("autores",autorDao.findAll());
 		
@@ -104,7 +108,7 @@ public class LivroController {
 	@RequestMapping(value = { "/livros/findByName/" })
 	@ResponseBody
 	public List<Livro> livrosFindByName(@RequestParam String titulo) {
-			System.out.println(titulo);
+		System.out.println(titulo);
 		return livroDao.findByTituloContainingIgnoreCase(titulo);
 	}
 

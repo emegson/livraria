@@ -1,15 +1,16 @@
 package com.ufabc.web.livraria.controller;
 
-import com.ufabc.web.livraria.model.dao.EditoraDao;
-import com.ufabc.web.livraria.model.entity.Editora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.ufabc.web.livraria.model.dao.EditoraDao;
+import com.ufabc.web.livraria.model.entity.Editora;
 
 @Controller
 
@@ -57,28 +58,7 @@ public class EditoraController {
 
 	@RequestMapping(value = { "/salvarEditora" })
 	@ResponseBody
-	public RedirectView salvarEditora(@RequestParam String id, @RequestParam String nome, @RequestParam String sede) {
-
-		Editora editora = new Editora();
-
-		editora.setId(Long.parseLong(id));
-		editora.setNome(nome);
-		editora.setSede(sede);
-
-		editoraDao.save(editora);
-		return new RedirectView("/editoras");
-	}
-
-	@RequestMapping(value = { "/salvarEdicaoEditora" })
-	@ResponseBody
-	public RedirectView salvarEdicaoAutor(@RequestParam String id, @RequestParam String nome,
-			@RequestParam String sede) {
-
-		Editora editora = new Editora();
-
-		editora = editoraDao.getOne(Long.parseLong(id));
-		editora.setNome(nome);
-		editora.setSede(sede);
+	public RedirectView salvarEditora(@ModelAttribute Editora editora) {
 
 		editoraDao.save(editora);
 		return new RedirectView("/editoras");

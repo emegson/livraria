@@ -10,15 +10,11 @@
 
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link href="https://blackrockdigital.github.io/startbootstrap-4-col-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="resources/site.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-	<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+	<link href="/resources/site.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	
 	
 </head>
 <body>
@@ -30,24 +26,24 @@
 		<div class="container">
 			<div class="form-group">
 				<label for="nome" class="control-label">Nome do Cliente</label>
-				<input type="text" class="form-control" id="nome" name="nome" required>
+				<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
 			</div>
 			<div class="form-group">
 				<label for="cpf" class="control-label">CPF</label>
-				<input type="text" class="form-control" id="cpf" name="cpf" required>
+				<input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
 			</div>
 			
 			<div class="form-group">
 				<label for="cpf" class="control-label">Idade</label>
-				<input type="text" class="form-control" id="idade" name="idade" required>
+				<input type="text" class="form-control" id="idade" name="idade" placeholder="Idade" required>
 			</div>
 			<div class="form-group">
 				<label for="cpf" class="control-label">Endereço</label>
-				<input type="text" class="form-control" id="endereco" name="endereco" required>
+				<input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" required>
 			</div>
 			<div class="form-group">
 				<label for="cpf" class="control-label">Email</label>
-				<input type="text" class="form-control" id="email" name="email" required>
+				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
 			</div>
 			<div class="form-group">
 				<!-- Submit Button -->

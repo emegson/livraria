@@ -32,6 +32,17 @@ public class ExemplarController {
 		return mv;
 	}
 	
+	@RequestMapping(value = {"/exemplares/{id}"})
+	@ResponseBody
+	//pagina para listar exemplares
+	public ModelAndView exemplarPorId(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView("exemplares");
+		mv.addObject("exemplares", exemplarDao.findByLivro(livroDao.getOne(id)));
+		System.out.println(exemplarDao.findById(id).toString());
+		mv.addObject("disponivel", exemplarDao.countExemplarDisponivel(id));
+		return mv;
+	}
+	
 	
 	// pagina que insere exemplar
 	@RequestMapping(value = {"/inserirExemplar" })
@@ -90,3 +101,4 @@ public class ExemplarController {
 	}
 
 }
+

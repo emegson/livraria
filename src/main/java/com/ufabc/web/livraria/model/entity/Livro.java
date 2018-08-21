@@ -23,6 +23,9 @@ public class Livro {
 	private String idioma;
 	private String isbn;
 	private String srcImagemCapa;
+	@ManyToOne
+	private Editora editora;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "idautor")
@@ -48,9 +51,6 @@ public class Livro {
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
-	@ManyToOne
-	private Editora editora;
-	
 	public Editora getEditora() {
 		return editora;
 	}
@@ -63,10 +63,10 @@ public class Livro {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public Long getidlivro() {
+	public Long getIdlivro() {
 		return idlivro;
 	}
-	public void setidlivro(Long id) {
+	public void setIdlivro(Long id) {
 		this.idlivro = id;
 	}
 	public String getTitulo() {

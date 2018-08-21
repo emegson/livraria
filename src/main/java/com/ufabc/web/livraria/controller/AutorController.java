@@ -74,9 +74,7 @@ public class AutorController {
 	@ResponseBody
 	public ModelAndView salvar(@ModelAttribute Autor autor) {		
 		
-		if (autor.getIdautor() == null) {
-			autor.setIdautor(0L);
-		}
+		
 		autorDao.save(autor);
 		
 		

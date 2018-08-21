@@ -17,7 +17,7 @@ public class Editora {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_sequence")
 	@SequenceGenerator(name = "service_sequence", sequenceName = "service_sequence", allocationSize=1)
-	private Long id;
+	private Long ideditora;
 	private String nome;
 	private String sede;
 	
@@ -30,11 +30,11 @@ public class Editora {
 	public void setLivros(Collection<Livro> livros) {
 		this.livros = livros;
 	}
-	public Long getId() {
-		return id;
+	public Long getIdeditora() {
+		return ideditora;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdeditora(Long id) {
+		this.ideditora = id;
 	}
 	public String getNome() {
 		return nome;

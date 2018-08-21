@@ -12,7 +12,7 @@ public class Emprestimo {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long idemprestimo;
 	private Date dataDoEmprestimo;
 	private Date dataDeRetorno;
 	
@@ -22,11 +22,21 @@ public class Emprestimo {
 	@ManyToOne
 	private Cliente cliente;
 	
-	public Long getId() {
-		return id;
+	public Emprestimo(){
+		
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public Emprestimo(Cliente cliente, Exemplar exemplar, Date dataDoEmprestimo, Date dataDeRetorno){
+		exemplar.setDisponivel(false);
+		this.setCliente(cliente);
+		this.setDataDoEmprestimo(dataDoEmprestimo);
+		this.setDataDeRetorno(dataDeRetorno);
+		this.setExemplar(exemplar);
+	}
+	public Long getIdemprestimo() {
+		return idemprestimo;
+	}
+	public void setIdemprestimo(Long id) {
+		this.idemprestimo = id;
 	}
 	public Cliente getCliente() {
 		return cliente;
