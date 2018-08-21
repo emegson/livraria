@@ -22,6 +22,13 @@ public class Exemplar {
 	@JoinColumn(name = "idlivro")
 	private Livro livro;
 	
+	public Long getIdexemplar() {
+		return idexemplar;
+	}
+
+	public void setIdexemplar(Long idexemplar) {
+		this.idexemplar = idexemplar;
+	}
 	private boolean disponivel;
 	
 	public Exemplar()
