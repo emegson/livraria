@@ -2,6 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<jsp:include page="header.jsp">
+	    <jsp:param name="header" value=""/>
+	</jsp:include>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,39 +27,35 @@
 </head>
 
 <body>
+	
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<form action="/salvarEdicaoExemplar" method="post"
+		style="margin-top: 75px;">
 		<div class="container">
-			<a class="navbar-brand" href="index">Livraria</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="index">Home
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="autor">Autor</a></li>
-					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="exemplares">Exemplares</a></li>
-					<li class="nav-item active"><a class="nav-link" href="editarExemplares">Editar Exemplares<span class="sr-only">(current)</span></a></li>
-				</ul>
+<div class="form-group">
+				<input type="text" class="form-control" id="idexemplar" name="idexemplar" required value="${exemplar.idexemplar}" style="display: none;">
+			</div>
+			<div class="form-group">
+				<label for="nomeAutor" class="control-label">Nome do Livro</label> <input
+					type="text" class="form-control" id="titulo" name="titulo" value="${exemplar.livro.titulo}" disabled>
+				<label for="disponivel" class="control-label">Disponível</label>
+				<input type="checkbox" class="form-control" id="disponivel" name="disponivel" ${exemplar.disponivel== true? "checked":"unchecked"}>
+			</div>
+			<div class="form-group">
+				<!-- Submit Button -->
+				<button type="submit" class="btn btn-primary">Salvar</button>
 			</div>
 		</div>
-	</nav>
-		
+	</form>
 
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Livraria
-				2018</p>
-		</div>
-	</footer>
+
 
 </body>
 
 </html>
+
+
+<jsp:include page="footer.jsp">
+	    <jsp:param name="footer" value=""/>
+	</jsp:include>
+

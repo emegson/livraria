@@ -6,36 +6,46 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Editar Editora</title>
+<title>Lista de Autores</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
 	integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
 	crossorigin="anonymous">
 </head>
 <body>
-
-	<form action="/salvarEdicaoEditora" method="post">
-		<div class="container">
-			<div class="form-group">
-				<input type="text" class="form-control" id="idEditora" name="idEditora" required value="${editora.id}" style="display:none;">
-			</div>
-			<div class="form-group">
-				<label for="nomeEditora" class="control-label">Nome da Editora</label>
-				<input type="text" class="form-control" id="nomeEditora" name="nomeEditora" required value="${editora.nome}">
-			</div>
-
-			<div class="form-group">
-				<label for="sedeEditora" class="control-label">Sede da Editora</label>
-				<input type="text" class="form-control" id="sedeEditora"	name="sedeEditora" value ="${editora.sede}" required>
-			</div>
-			<div class="form-group">
-				<!-- Submit Button -->
-				<button type="submit" class="btn btn-primary">Salvar</button>
-			</div>
-		</div>
-	</form>
-
-
+	<jsp:include page="header.jsp">
+	    <jsp:param name="header" value=""/>
+	</jsp:include>
+		
+	
+	<div class="container">
+		<table class="table table-striped ">
+			<thead>
+				<tr>
+					<th scope="col">Nome do Autor</th>
+					<th scope="col">Nacionalidade do Autor</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Remover</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${autores}" var="autores">
+					<tr>
+						<td>${autores.nome}</td>
+						<td>${autores.nacionalidade}</td>
+						<td><a href="/editarAutor/${autores.idautor}"
+							class="btn btn-primary ">Editar</a></td>
+						<td><a href="/removerAutor/${autores.idautor}"
+							class="btn btn-secondary ">Remover</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<jsp:include page="footer.jsp">
+	    <jsp:param name="footer" value=""/>
+	</jsp:include>
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -49,3 +59,6 @@
 		crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+	

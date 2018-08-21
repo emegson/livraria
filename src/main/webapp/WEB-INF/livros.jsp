@@ -1,7 +1,12 @@
+	<jsp:include page="header.jsp">
+	    <jsp:param name="header" value=""/>
+	</jsp:include>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+	
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -22,31 +27,9 @@
 	
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index">Livraria</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="index">Home
-					</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="autores">Autor</a>
-					</li>
-					<li class="nav-item active"><a class="nav-link" href="livros">Livro
-						<span class="sr-only">(current)</span>
-					</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		
+
+	
 	<div class="main">
 		<div class="card-columns">
 			<c:forEach items="${livros}" var="livros">
@@ -75,19 +58,13 @@
 			</c:forEach>
 			<br>
 			
-		</div>
-		<div class="container">
-			<a href="inserirLivro">
-				<button type="button" class="btn btn-primary">Inserir Livro</button>
-			</a>
-		</div>	
+		</div>		
 	</div>
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Livraria
-				2018</p>
-		</div>
-	</footer>
+	
+	
 </body>
 
 </html>
+<jsp:include page="footer.jsp">
+	    <jsp:param name="footer" value=""/>
+	</jsp:include>

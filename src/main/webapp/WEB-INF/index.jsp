@@ -2,7 +2,13 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
+
+
+
+	<jsp:include page="header.jsp">
+	    <jsp:param name="header" value=""/>
+	</jsp:include>
+	<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
@@ -23,28 +29,7 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index">Livraria</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="index">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="autores">Autor</a></li>
-					<li class="nav-item"><a class="nav-link" href="livros">Livro</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Editora</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+
 	<div class="main">
 		<div class="card-columns">
 			<c:forEach items="${livros}" var="livros">
@@ -60,7 +45,6 @@
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">Edição: ${livros.edicao}</li>
 									<li class="list-group-item">Ano: ${livros.ano}</li>
-									<li class="list-group-item">Quantidade: ${livros.quantidade}</li>
 								</ul>
 							</p>
 						</div>
@@ -68,13 +52,11 @@
 			</c:forEach>
 		</div>
 
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Livraria
-				2018</p>
-		</div>
-	</footer>
+
 
 </body>
 
 </html>
+	<jsp:include page="footer.jsp">
+	    <jsp:param name="footer" value=""/>
+	</jsp:include>
